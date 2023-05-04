@@ -1,5 +1,7 @@
 package Classe;
 
+import java.util.Arrays;
+
 public class Student {
 	String name , surname ;
 	char genere;
@@ -21,17 +23,55 @@ public class Student {
 		return mediaVoti /this.voti.length ;
 	} 
 	
+
 	public static Student mBest (Student[] studenti) {
+		double mediaMigliore=0.0;
 		Student bestStudent = null;
+		Student s = null;
 		
 		for (int i = 0 ;i< studenti.length ; i++) {
-			
-			if(studenti[i].genere == 'M' && studenti[i].media() > bestStudent.media()) {
-				bestStudent= studenti[i];
+			s = studenti[i];
+			if(studenti[i].genere == 'M' && s.media() >mediaMigliore) {
+				mediaMigliore=s.media();
+				bestStudent= s;
 			}
 		}
 		
 		return bestStudent;
+	}
+	public static Student fBest (Student[] studenti) {
+		double mediaMigliore=0.0;
+		Student bestStudent = null;
+		Student s = null;
+		
+		for (int i = 0 ;i< studenti.length ; i++) {
+			s = studenti[i];
+			if(studenti[i].genere == 'F' && s.media() >mediaMigliore) {
+				mediaMigliore=s.media();
+				bestStudent= s;
+			}
+		}
+		
+		return bestStudent;
+	}
+	public static Student theBest (Student[] studenti) {
+		double mediaMigliore=0.0;
+		Student bestStudent = null;
+		Student s = null;
+		for (int i = 0 ;i< studenti.length ; i++) {
+			s = studenti[i];
+			if(s.media() >mediaMigliore) {
+				 mediaMigliore=s.media();
+				bestStudent= s;
+			}
+		}
+		
+		return bestStudent;
+	}
+	
+	@Override
+	public String toString () {
+		return "{ name: "+this.name+"; surname: "+this.surname+"; genere: "+ this.genere +"; voti: "+ Arrays.toString(this.voti)+"}";
 	}
 	;
 }
